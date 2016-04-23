@@ -121,6 +121,7 @@ while((nTarg ~= 0) | (tagSearch ==1) | (tagRescue == 1)) & (tS <= tF)
         N_targP = nTarg;
         figure(1)
         plotRobot1(h1, posn, SF, clr)
+        %plotSensor(h1, posn, rad, sDepPalette(kk), sSpanPalette(kk))    % <---------- My edit
         drawnow;
 
         for i =1:nTarg
