@@ -4,8 +4,8 @@
 % Written by: Ali Raza, (c) 2013
 % ali.raza@ymail.com
 %
-% Modified by: Write your name(s) and reg. no(s). here!
-% Technique used: Indicate the technique here!
+% Modified by: Muhammad Dawer Saeed.  2016-MS-MC-13.
+% Technique used: Beam Curvature Method (BCM).
 %
 % University of Engineering and Technology
 % ========================================================================
@@ -14,13 +14,13 @@ clear; close all;
 global sBinStr_l sBinStr_o sBinStr_t Dist th th_g Dist1
 global aa mi tag1 positionTrace orientationTrace FT mi1 mi2 ki ai thT th
 addpath('plotUtilities','generalUtilities','arenaUtilities','sensorUtilities','navModules','scenarios')
-set(0,'DefaultFigureWindowStyle','docked')
-%set(0,'DefaultFigureWindowStyle','normal')
+%set(0,'DefaultFigureWindowStyle','docked')
+set(0,'DefaultFigureWindowStyle','normal')
 
 % ========================================================================
 % First execute the file named: 'expConfig' 
 load('expConfig')
-tF = 60;
+tF = 150;
 
 % ========================================================================
 % Plotting configuration
@@ -28,12 +28,13 @@ tF = 60;
 recallArena = 1;
 
 % the arena names to try are as follows:
-% 'S0_1a', 'S0_1b', 'S0_1c', 'S1_1a', 'S1_1b', 'S1_1c', 'S1_1d', 'S1_1e',
-% 'S1_1f', 'S1_1g', 'S2_2a', 'S2_2b', 'S2_2c', 'S2_2d', 'S2_2e', 'S2_3a',
-% 'S2_3b', 'S2_3c', 'S2_3d', 'S2_3e',
+% 'S0_1a'*, 'S0_1b', 'S0_1c', 'S1_1a', 'S1_1b', 'S1_1c'*, 'S1_1d'*, 'S1_1e',
+% 'S1_1f'*, 'S1_1g*', 'S2_2a', 'S2_2b'*, 'S2_2c'*, 'S2_2d', 'S2_2e', 'S2_3a',
+% 'S2_3b'*, 'S2_3c', 'S2_3d', 'S2_3e'*,
 % replace the following name one by one!
 
-arenaName = 'S2_3d';
+arenaName = 'S2_3d';   %Default: S2_3d
+
 if recallArena == 1
     load(arenaName, 'arena', 'obstacles', 'targets')
     arenaSize = [arena(1,2) arena(1,3) arena(3,4) (arena(3,3)+arena(3,5))];
