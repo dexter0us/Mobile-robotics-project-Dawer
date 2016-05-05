@@ -88,6 +88,9 @@ tagRescue   = 0;
 tSwitch     = [];
 tag3        = 0;
 tic
+
+%this is the main loop function which repeats itself untill the robot find its targets.%
+
 while((nTarg ~= 0) | (tagSearch ==1) | (tagRescue == 1)) & (tS <= tF)
 
     posn            = icPalette(ll,:);
