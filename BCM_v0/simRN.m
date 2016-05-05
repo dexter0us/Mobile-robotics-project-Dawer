@@ -33,7 +33,7 @@ recallArena = 1;
 % 'S2_3b'*, 'S2_3c', 'S2_3d', 'S2_3e'*,
 % replace the following name one by one!
 
-arenaName = 'S2_3d';   %Default: S2_3d
+arenaName = 'S2_3e';   %Default: S2_3d
 
 if recallArena == 1
     load(arenaName, 'arena', 'obstacles', 'targets')
@@ -60,7 +60,7 @@ hold on;
 % ========================================================================
 
 % Initial plots prior to start of algorithm
-for kk = 1:nR
+for kk = 1:nR         %nR is for more than one robots.
     plotRobot1(h1, icPalette(kk,:), SF, clrPalette(kk,2:4));
     plotSensor(h1, icPalette(kk,:), rad, sDepPalette(kk), sSpanPalette(kk));
     [sBinStr_o sBinStr_t dist_o dist_t dist_o1 th th_o th_g]   = sensorModule1c(icPalette(kk,:), rad, course, sDepPalette(kk), sSpanPalette(kk), sBinStr_lPalette(kk));
@@ -108,11 +108,14 @@ while((nTarg ~= 0) | (tagSearch ==1) | (tagRescue == 1)) & (tS <= tF)
     % Your code most probably change the following! 
     % =====================================================================
     [sBinStr_o sBinStr_t dist_o th th_g dist_t] = sensorModule1(posn, rad, course, sDep, sSpan, sBinStr_l);
-    [F_th1 F_th2 f_OA f_OA_fltd f_GS f_GS_fltd f_GS1 f_GS1_fltd] = objFn_Heading(th, th_g, dist_o, sBinStr_l, sDep, dist_t);
+    [F_th1 F_th2 f_OA f_OA_fltd f_GS f_GS_fltd f_GS1 f_GS1_fltd] = objFn_Heading(th, th_g, dist_o, sBinStr_l, sDep, dist_t); %obstacle avoid + goal seeking is happening here.
     [thC thT] = max(F_th1);
     % [thC thT] = max(F_th2);
     theta = (th(thT));
-    rho1 = 10;
+        %kinematics function will be implemented here.
+    rho1 = 10;  %steps of robot
+    
+    % end of changings generally.
 
     [EE negR kappa] = energyFa(posn, sBinStr_l, sBinStr_o, sBinStr_t, dist_o, sDep, energy, ES, negR, maxEnergy);
 
