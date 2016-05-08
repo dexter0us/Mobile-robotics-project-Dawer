@@ -33,7 +33,7 @@ recallArena = 1;
 % 'S2_3b'*, 'S2_3c', 'S2_3d', 'S2_3e'*,
 % replace the following name one by one!
 
-arenaName = 'S2_3e';   %Default: S2_3d
+arenaName = 'S2_3d';   %Default: S2_3d
 
 if recallArena == 1
     load(arenaName, 'arena', 'obstacles', 'targets')

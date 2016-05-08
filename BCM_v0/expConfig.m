@@ -5,7 +5,8 @@
 %
 % University of Engineering and Technology
 % ========================================================================
-
+% initial conditions for the robot, it provides the x, y and the theeta
+% position of the robot.
 ic1         = [50 50 pi/2];
 ic2         = [400 50 pi/2];
 ic3         = [800 50 pi/2];
@@ -16,9 +17,9 @@ ic6         = [50 500 pi/2];
 % ic7         = [400 520 pi/2];
 ic7         = [400 550 0];
 ic8         = [800 550 pi];
-
-rad         = 10;
-SF          = 10;
+%----------------------------------------------------------------------------
+rad         = 10;   % it is the 
+SF          = 10;   % 
 
 tag1        = 0;
 tag2        = 1;
@@ -43,7 +44,7 @@ energyTrace         = [];
 orientationTrace    = [];
 inflammationTrace   = [];
 idTrace             = [];
-
+% ---------------- end of defining the basic variables -----------------
 nR                  = 1;
 nRmax               = 7;    % maximum number of robots (for specifying colors only)
 icPalette           = [ic8; ic2; ic3; ic4; ic5; ic6; ic7; ic8];
