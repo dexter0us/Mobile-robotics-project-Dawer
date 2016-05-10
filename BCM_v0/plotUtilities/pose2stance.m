@@ -4,7 +4,16 @@
 % ali.raza@ymail.com
 %
 % University of Engineering and Technology
+
+% input variables:
+% x= x-coordinate, y= y-coordinate
+% theta = the pose angle.
+% SF = scaling factor.
+
+% Output Variables:
+% P = a matrix of 12x2
 % ========================================================================
+
 
 function P = pose2stance(x,y,theta,SF)
 
@@ -25,6 +34,8 @@ P(11,:) = [-0.25 -0.7];
 P(12,:) = [-0.25 -0.8];
 P = P*SF;
 
+% here it is now calculating the rotation matrix of the robot.
+% the returned matrix is of 12 x 2 size.
 for I=1:12
     
     P(I,:) = (R*(P(I,:))')';
