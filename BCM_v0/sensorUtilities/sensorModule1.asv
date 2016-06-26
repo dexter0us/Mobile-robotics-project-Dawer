@@ -37,14 +37,9 @@ for j = 1:C_BinStr_l
         y(y > dimy) = dimy;
         if(course(round(x),round(y)) == 0)      % Obstacle (Black = 0)
             C_BinStr_o(j)   = 0;
-            % if the sensor see the obstacle, then it will put that
-            % specific entry of the obstacle vector as zero.
         end
         if (course(round(x),round(y)) == 76)    % Target (red->grey =76)
-            %if the sensors see the target, then it will make that specific
-            %entry of the target vector as zero. Also put the J'th entry
-            %of the vector th_g equal to th_inc. also put that specific
-            %entry of Dist1 vector as 1.
+            %if the sensors see the target as 
             C_BinStr_t(j)   = 0;
             th_g(j) = th_inc;
             Dist1(j)= 1;

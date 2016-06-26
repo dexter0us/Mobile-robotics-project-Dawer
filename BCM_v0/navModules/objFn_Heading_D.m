@@ -7,7 +7,7 @@
 %
 % University of Engineering and Technology
 % ========================================================================
-function [F_th1 F_th2 f_OA f_OA_fltd f_GS f_GS_fltd f_GS1 f_GS1_fltd] = objFn_Heading(th, th_g, Dist, C_BinStr_l, C_dep, Dist1)
+function [F_th1 f_OA f_GS f_GS1] = objFn_Heading(th, th_g, Dist, C_BinStr_l, C_dep, Dist1)
 
 sFactor = 0.1;
 nVectors = 50;
@@ -44,13 +44,18 @@ for j = 1:C_BinStr_l
     f_GS1a(j) = (1 - cos(th_g(j)-th(j)))/2;
 end
 f_GS1 = Dist1 + f_GS1a;
-
+% F_th1 = f_GS1;
+% F_th2 = f_GS1;
 %=====================================================================
 % The below steps are filtering the output by smoothing them.
 % f_OA_fltd = medfilt1(f_OA,m);
+
 f_OA_fltd = filtfilt(ones(1,m)/m,1,f_OA); % this step is applying the filter to the sensor.
 f_GS_fltd = filtfilt(ones(1,m1)/m1,1,f_GS);
 f_GS1_fltd = filtfilt(ones(1,m1)/m1,1,f_GS1);
-
+% 
 F_th1 = (w_OA*f_OA_fltd) + (w_GS*f_GS_fltd);
-F_th2 = (1-w_OA*(1-f_OA_fltd)).*(1-w_GS*(1-f_GS_fltd));
+% F_th2 = (1-w_OA*(1-f_OA_fltd)).*(1-w_GS*(1-f_GS_fltd));
+
+% F_th1 = filtfilt(ones(1,m)/m,1,f_OA);
+% F_th2 = filtfilt(ones(1,m1)/m1,1,f_GS);
