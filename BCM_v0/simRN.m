@@ -127,9 +127,9 @@ while((nTarg ~= 0) | (tagSearch ==1) | (tagRescue == 1)) & (tS <= tF)
     %[F_th1 F_th2 f_OA f_OA_fltd f_GS f_GS_fltd f_GS1 f_GS1_fltd] = objFn_Heading(th, th_g, dist_o, sBinStr_l, sDep, dist_t); %obstacle avoid + goal seeking is happening here.
     [F_th1 f_OA f_GS f_GS1] = objFn_Heading_D(th, th_g, dist_o, sBinStr_l, sDep, dist_t); %obstacle avoid + goal seeking is happening here.    
     [thC thT] = max(F_th1); %maximum is being calculated here, and the thT is the position of that maximum value in the matrix.
-    figure(2);
+    %figure(2);
     %plot(F_th1);
-    polar(th,F_th1);
+    %polar(th,F_th1);
     % [thC thT] = max(F_th2);
     theta = (th(thT));  %this is the "thT"th vlue of the "th" vector.
         %kinematics function will be implemented here.
@@ -141,7 +141,12 @@ while((nTarg ~= 0) | (tagSearch ==1) | (tagRescue == 1)) & (tS <= tF)
 
     % =====================================================================
     if (tagSearch == 1)
-        [prx pry] = pol2cart(theta,rho1);
+        [prx pry] = pol2cart(theta,rho1);   % here at this point the program is updating the new coordinates for the new forward position.
+                                            % the theta is the angle of
+                                            % inclinaiton, in which
+                                            % direction the robot will move
+                                            % forward. i.e in the goal
+                                            % direction.
         posn_p = posn;
         posn = [posn(1)+prx posn(2)+pry theta];
         N_targP = nTarg;

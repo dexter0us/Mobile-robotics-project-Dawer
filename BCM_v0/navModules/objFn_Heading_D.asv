@@ -40,8 +40,7 @@ f_GS = Dist1;
 % f_GS1 = 1 - abs((th2-th_g2)/pi);
 %=====================================================================
 % Alternative approach for goal seeking function
-% this function only gives the robot a direction. it will create a vector
-% that will just contain values, that 
+% this function only gives the robot a direction. if th
 
 for j = 1:C_BinStr_l
     f_GS1a(j) = (1 - cos(th_g(j)-th(j)))/2;

@@ -25,6 +25,7 @@ Dist            = C_dep*ones(sizeFactor);
 Dist1           = 0.2*zeros(sizeFactor);
 th              = zeros(sizeFactor);
 th_g            = zeros(sizeFactor);
+tag1 = 0;
 
 for j = 1:C_BinStr_l
     for i = rad:(rad + C_dep)
@@ -37,23 +38,28 @@ for j = 1:C_BinStr_l
         y(y > dimy) = dimy;
         if(course(round(x),round(y)) == 0)      % Obstacle (Black = 0)
             C_BinStr_o(j)   = 0;
+            % if the sensor see the obstacle, then it will put that
+            % specific entry of the obstacle vector as zero.
         end
         if (course(round(x),round(y)) == 76)    % Target (red->grey =76)
-            %if the sensors see the target as 
+            %if the sensors see the target, then it will make that specific
+            %entry of the target vector as zero. Also put the J'th entry
+            %of the vector th_g equal to th_inc. also put that specific
+            %entry of Dist1 vector as 1.
             C_BinStr_t(j)   = 0;
-            th_g(j) = th_inc;
+            th_g(j) = th_inc;   %th_g is only for the goal. when there will be a goal in the range, it will get that specific entry equal to th_inc otherwise equal to 0.
             Dist1(j)= 1;
         end
         % if (C_BinStr_t(j)== 0)|(C_BinStr_o(j)==0)
         if (C_BinStr_o(j)==0)
-            Dist(j) = i;
+            Dist(j) = i;    % it is the value of the specific sensor's outpu at that sp
             break
         end
         if (C_BinStr_t(j)== 0)
             break
         end
     end
-    th(j) = th_inc;
+    th(j) = th_inc;    % th contains the th_inc of all the inclination angles on the robot, and updates in every circle from zero.
     [x1 y1] = pol2cart(th_inc,i);
     th_inc  = th_inc + C_span/C_BinStr_l;
     posn    = [posn(1) posn(2) posn33];
