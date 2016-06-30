@@ -41,7 +41,9 @@ f_GS = Dist1;
 %=====================================================================
 % Alternative approach for goal seeking function
 % this function only gives the robot a direction. it will create a vector
-% that will just contain values, that 
+% that will just contain values normalized accordingly. if the sensor has
+% not seen anything, its value will be small, if the sensor has seen the
+% goal, the value will be larger.
 
 for j = 1:C_BinStr_l
     f_GS1a(j) = (1 - cos(th_g(j)-th(j)))/2;
@@ -57,6 +59,11 @@ f_OA_fltd = filtfilt(ones(1,m)/m,1,f_OA); % this step is applying the filter to 
 f_GS_fltd = filtfilt(ones(1,m1)/m1,1,f_GS);
 f_GS1_fltd = filtfilt(ones(1,m1)/m1,1,f_GS1);
 % 
+
+% F_th1 is the main vector that will determine that in which direction the
+% robot needs to go.... the technique will either output the angle of
+% inclinaiton or this vector that will contain all the values and then the
+% direction will be decided on the basis of maximum of the output values.
 F_th1 = (w_OA*f_OA_fltd) + (w_GS*f_GS_fltd);
 % F_th2 = (1-w_OA*(1-f_OA_fltd)).*(1-w_GS*(1-f_GS_fltd));
 
