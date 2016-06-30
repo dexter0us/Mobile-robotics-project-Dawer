@@ -124,14 +124,17 @@ while((nTarg ~= 0) | (tagSearch ==1) | (tagRescue == 1)) & (tS <= tF)
     % place our own function into it. (Also if we need to add the velocity
     % function, it will be incorporated here as well.)
 
+    [th_inc F_th1]= objFn_Heading_Dawer(th,th_g,Dist,Dist1,sBinStr_l,sDep,posn,posn1,obstacles,dist_o,targets);
+    theta=(th_inc);
+    
     %[F_th1 F_th2 f_OA f_OA_fltd f_GS f_GS_fltd f_GS1 f_GS1_fltd] = objFn_Heading(th, th_g, dist_o, sBinStr_l, sDep, dist_t); %obstacle avoid + goal seeking is happening here.
-    [F_th1 f_OA f_GS f_GS1] = objFn_Heading_D(th, th_g, dist_o, sBinStr_l, sDep, dist_t); %obstacle avoid + goal seeking is happening here.    
-    [thC thT] = max(F_th1); %maximum is being calculated here, and the thT is the position of that maximum value in the matrix.
+    %[F_th1 f_OA f_GS f_GS1] = objFn_Heading_D(th, th_g, dist_o, sBinStr_l, sDep, dist_t); %obstacle avoid + goal seeking is happening here.    
+    %[thC thT] = max(F_th1); %maximum is being calculated here, and the thT is the position of that maximum value in the matrix.
     %figure(2);
     %plot(F_th1);
     %polar(th,F_th1);
     % [thC thT] = max(F_th2);
-    theta = (th(thT));  %this is the "thT"th vlue of the "th" vector.
+    %theta = (th(thT));  %this is the "thT"th vlue of the "th" vector.
         %kinematics function will be implemented here.
     rho1 = 10;  %steps of robot, to jump for 10 pixels.
     

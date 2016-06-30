@@ -47,7 +47,7 @@ idTrace             = [];
 % ---------------- end of defining the basic variables -----------------
 nR                  = 1;
 nRmax               = 7;    % maximum number of robots (for specifying colors only)
-icPalette           = [ic7; ic2; ic3; ic4; ic5; ic6; ic7; ic8];
+icPalette           = [ic2; ic2; ic3; ic4; ic5; ic6; ic7; ic8];
 clrs                = [.2 .4 .4; .6 .4 .4; .2 .2 .4; .4 .4 .2; .6 .2 .4; .6 .4 .2; .4 .4 .4 ];
 clrPalette          = [(1:nRmax)' clrs];
 sDepPalette         = [250; 350; 250; 250; 250; 250; 250];  %sensor depth palette
